@@ -1,0 +1,14 @@
+# --- Для Frontend---
+node_modules/
+frontend/dist/
+.env
+.env.local
+
+# --- Для Backend---
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+env/
+backend/data.json
+
