@@ -1,4 +1,5 @@
-import { Card, Statistic, Flex } from 'antd';
+import { Flex } from 'antd';
+import { KpiCard } from './components/KpiCard';
 
 function App() {
   return (
@@ -6,42 +7,58 @@ function App() {
       
       <Flex gap="middle" wrap="nowrap">
         
-        <Card style={{ flex: 1 }}>
-          <Statistic 
-            title="Пункты пропуска" 
-            value={50} 
-            valueStyle={{ color: '#3f8600' }}/>
-        </Card>
+        {/* пп*/}
+        <div style={{ flex: 1 }}>
+          <KpiCard 
+            title="Пункты пропуска на связи" 
+            mainValue={341} 
+            subValue="из 363" 
+            percent={94} 
+            errorText="22 без связи" />
+        </div>
 
-        <Card style={{ flex: 1 }}>
-          <Statistic 
+        {/* видеокамеры */}
+        <div style={{ flex: 1 }}>
+          <KpiCard 
             title="Видеокамеры" 
-            value={75} 
-            valueStyle={{ color: '#3f8600' }}/>
-        </Card>
-
-        <Card style={{ flex: 1 }}>
-          <Statistic 
+            mainValue={4812} 
+            subValue="из 4999" 
+            percent={96} 
+            errorText="187 офлайн"/>
+        </div>
+        
+        {/* серверы на ПП */}
+        <div style={{ flex: 1 }}>
+          <KpiCard 
             title="Серверы на ПП" 
-            value={2} 
-            valueStyle={{ color: '#cf1322' }}/>
-        </Card>
+            mainValue={726} 
+            subValue="в норме из 742" 
+            percent={98} 
+            errorText="12 предупреждений"/>
+        </div>
 
-        <Card style={{ flex: 1 }}>
-          <Statistic 
-            title="КЦОД" 
-            value={99}
-            suffix="%" />
-        </Card>
+        {/* КЦОД — доступность */}
+        <div style={{ flex: 1 }}>
+          <KpiCard 
+            title="КЦОД — доступность" 
+            mainValue="99,97%" 
+            subValue="за 30 дней" 
+            percent={99} 
+            goodText="норма"/>
+        </div>
 
-        <Card style={{ flex: 1 }}>
-          <Statistic 
-            title="Каналы VipNet" 
-            value={100} 
-            valueStyle={{ color: '#3f8600' }}/>
-        </Card>
+        {/* каналы випнет */}
+        <div style={{ flex: 1 }}>
+          <KpiCard 
+            title="Каналы ViPNet" 
+            mainValue={358} 
+            subValue="туннелей активно" 
+            percent={98} 
+            errorText="5 нестабильных"/>
+        </div>
 
       </Flex>
+
     </div>
   );
 }
