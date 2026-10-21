@@ -1,3 +1,6 @@
+import { Row, Col } from 'antd'; 
+import { AvailabilityChart } from './components/chart'; 
+import { ActiveIncidents } from './components/active';
 import { Flex } from 'antd';
 import { KpiCard } from './components/KpiCard';
 
@@ -5,7 +8,7 @@ function App() {
   return (
     <div style={{ padding: '24px', backgroundColor: '#f0f2f5', minHeight: '100vh' }}>
       
-      <Flex gap="middle" wrap="nowrap">
+      <Flex gap="middle" wrap="nowrap" style={{ marginBottom: '24px' }}>
         
         {/* пп*/}
         <div style={{ flex: 1 }}>
@@ -58,6 +61,21 @@ function App() {
         </div>
 
       </Flex>
+
+      {/* ряд с графиком и инцидентами */}
+      <Row gutter={[24, 24]}>
+        
+        <Col xs={24} xl={16}>
+          <AvailabilityChart />
+        </Col>
+
+        <Col xs={24} xl={8}>
+          <ActiveIncidents />
+        </Col>
+        
+      </Row>
+
+
 
     </div>
   );
