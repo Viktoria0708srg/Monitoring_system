@@ -3,22 +3,19 @@ import { Line } from '@ant-design/plots';
 
 const { Text } = Typography;
 
-const data = [
-    { time: '00:00', type: 'Камеры', value: 99.8 },
-    { time: '07:00', type: 'Камеры', value: 97.5 },
-    { time: '12:00', type: 'Камеры', value: 98.5 },
-    { time: '20:00', type: 'Камеры', value: 99.3 },
-    { time: '00:00', type: 'Серверы', value: 99.9 },
-    { time: '07:00', type: 'Серверы', value: 99.8 }, 
-    { time: '12:00', type: 'Серверы', value: 99.9 }, 
-    { time: '20:00', type: 'Серверы', value: 99.9 },
-    { time: '00:00', type: 'ViPNet', value: 98.6 },
-    { time: '07:00', type: 'ViPNet', value: 91.4 },
-    { time: '12:00', type: 'ViPNet', value: 97.0 }, 
-    { time: '20:00', type: 'ViPNet', value: 98.0 },
-];
+// 1. Описываем, какие данные приходят
+export interface ChartData {
+  time: string;
+  type: string;
+  value: number;
+}
 
-export function AvailabilityChart() {
+interface AvailabilityChartProps {
+  data: ChartData[];
+}
+
+// 2. Компонент принимает только data
+export function AvailabilityChart({ data }: AvailabilityChartProps) {
   return (
     <Card 
       title={
