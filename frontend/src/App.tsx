@@ -46,7 +46,7 @@ function App() {
       
       <Flex gap="middle" wrap="nowrap" style={{ marginBottom: '24px' }}>
 
-        <div style={{ flex: 1 }}>
+        <div style={{flex: 1}}>
           <KpiCard 
           title="Пункты пропуска на связи" 
           mainValue={341} 
@@ -55,7 +55,7 @@ function App() {
           errorText="22 без связи" />
         </div>
 
-        <div style={{ flex: 1 }}>
+        <div style={{ flex: 1}}>
           <KpiCard 
           title="Видеокамеры" 
           mainValue={4812} 
@@ -95,21 +95,38 @@ function App() {
 {/*-----------------------------*/}
 
       <Flex gap="middle" wrap="nowrap" style={{ marginBottom: '24px' }}>
-        <div style={{ flex: 2 }}><AvailabilityChart data={chartData} /></div>
-        <div style={{ flex: 1 }}><ActiveIncidents incidents={incidentsData} totalCount={9} /></div>
+        <div style={{ flex: 2 }}>
+          <AvailabilityChart 
+            title="Доступность инфраструктуры за 24 часа"
+            subtitle="Доля устройств на связи, %"
+            data={chartData} />
+        </div>
+
+        <div style={{ flex: 1 }}>
+          <ActiveIncidents 
+            title="Активные инциденты"
+            totalText="9 открытых"
+            incidents={incidentsData} />
+        </div>
       </Flex>
 
   {/*------------------------------*/}
       <Flex gap="middle" wrap="nowrap" style={{ marginBottom: '24px' }}>
         <div style={{ flex: 2, minWidth: 0 }}><BranchTable data={branchesData} /></div>
+
         <div style={{ flex: 1, minWidth: 0 }}>
           <DataCenterStats 
-            clusterLoad={62} clusterNodes="12 из 18 узлов"
-            storageLoad={78} storageSize="312 ТБ из 400 ТБ"
-            temperature="27,4" tempStatus="warn"
-            availability="34 / 34" ups="42 мин · заряд 100 %" humidity="44 %"
-          />
+            clusterLoad={62} 
+            clusterNodes="12 из 18 узлов"
+            storageLoad={78} 
+            storageSize="312 ТБ из 400 ТБ"
+            temperature="27,4" 
+            tempStatus="warn"
+            availability="34 / 34" 
+            ups="42 мин · заряд 100 %" 
+            humidity="44 %"/>
         </div>
+
       </Flex>
 
 {/*-----------------------------------*/}
@@ -117,17 +134,22 @@ function App() {
         <div style={{ flex: 1 }}>
           <ProblemPoints 
             data={[
-              { name: 'МАПП Нехотеевка', count: 24 },
-              { name: 'ЖДПП Валуйки', count: 18 },
-              { name: 'ДАПП Колотиловка', count: 13 },
-              { name: 'МАПП Шебекино', count: 11 },
-              { name: 'ЖДПП Головчино', count: 8 },
-              { name: 'МАПП Ровеньки', count: 6 },
-            ]} 
-          />
+              {name:'МАПП Нехотеевка', count: 24},
+              {name: 'ЖДПП Валуйки', count: 18} ,
+              {name: 'ДАПП Колотиловка', count: 13},
+              {name: 'МАПП Шебекино', count: 11},
+              {name: 'ЖДПП Головчино', count: 8},
+              {name: 'МАПП Ровеньки', count: 6},
+            ]} />
         </div>
-        <div style={{ flex: 1 }}><Card title="Инциденты за 14 дней" style={{ borderRadius: "12px", height: '100%' }} /></div>
-        <div style={{ flex: 1 }}><Card title="Парк оборудования" style={{ borderRadius: "12px", height: '100%' }} /></div>
+
+        <div style={{ flex: 1 }}>
+          <Card title="Инциденты за 14 дней" style={{ borderRadius: "12px", height: '100%' }} />
+        </div>
+
+        <div style={{ flex: 1 }}>
+          <Card title="Парк оборудования" style={{ borderRadius: "12px", height: '100%' }} />
+        </div>
       </Flex>
 
     </div>
