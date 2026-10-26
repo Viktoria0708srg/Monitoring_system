@@ -5,7 +5,7 @@ import { BranchTable } from './components/branches';
 import { DataCenterStats } from './components/kzod';
 import { KpiCard } from './components/KpiCard';
 import { ProblemPoints } from './components/problemPoints'; 
-
+import { IncidentsChart } from './components/14days'
 const chartData = [
   { time: '00:00', type: 'Камеры', value: 99.8 }, 
   { time: '07:00', type: 'Камеры', value: 95.5 },
@@ -37,6 +37,26 @@ const branchesData = [
   { key: '3', name: 'Крымский', pp: '9 / 11', cams: '214 / 240', servers: '22', rtt: '63 мс', index: 54, status: 'error' },
   { key: '4', name: 'Мурманский', pp: '14 / 17', cams: '301 / 305', servers: '29', rtt: '33 мс', index: 91, status: 'ok' },
   { key: '5', name: 'Ростовский', pp: '19 / 21', cams: '301 / 305', servers: '29', rtt: '30 мс', index: 61, status: 'warn' },
+];
+
+
+
+// Данные для графика инцидентов за 14 дней
+const incidentsChartData = [
+  { date: '19', type: 'Предупреждение', count: 5 }, { date: '19', type: 'Авария', count: 2 },
+  { date: '20', type: 'Предупреждение', count: 6 }, { date: '20', type: 'Авария', count: 2 },
+  { date: '21', type: 'Предупреждение', count: 4 }, { date: '21', type: 'Авария', count: 5 },
+  { date: '22', type: 'Предупреждение', count: 5 }, { date: '22', type: 'Авария', count: 3 },
+  { date: '23', type: 'Предупреждение', count: 8 }, { date: '23', type: 'Авария', count: 4 },
+  { date: '24', type: 'Предупреждение', count: 7 }, { date: '24', type: 'Авария', count: 7 },
+  { date: '25', type: 'Предупреждение', count: 6 }, { date: '25', type: 'Авария', count: 5 },
+  { date: '26', type: 'Предупреждение', count: 3 }, { date: '26', type: 'Авария', count: 2 },
+  { date: '27', type: 'Предупреждение', count: 2 }, { date: '27', type: 'Авария', count: 1 },
+  { date: '28', type: 'Предупреждение', count: 4 }, { date: '28', type: 'Авария', count: 4 },
+  { date: '29', type: 'Предупреждение', count: 7 }, { date: '29', type: 'Авария', count: 6 },
+  { date: '30', type: 'Предупреждение', count: 9 }, { date: '30', type: 'Авария', count: 8 },
+  { date: '31', type: 'Предупреждение', count: 6 }, { date: '31', type: 'Авария', count: 4 },
+  { date: '1', type: 'Предупреждение', count: 4 }, { date: '1', type: 'Авария', count: 3 },
 ];
 
 
@@ -130,7 +150,7 @@ function App() {
       </Flex>
 
 {/*-----------------------------------*/}
-      <Flex gap="middle" wrap="nowrap">
+      <Flex gap="middle" wrap="nowrap" >
         <div style={{ flex: 1 }}>
           <ProblemPoints 
             data={[
@@ -144,7 +164,11 @@ function App() {
         </div>
 
         <div style={{ flex: 1 }}>
-          <Card title="Инциденты за 14 дней" style={{ borderRadius: "12px", height: '100%' }} />
+          <IncidentsChart 
+            title="Инциденты за 14 дней"
+            subtitle="Зарегистрировано событий в сутки"
+            data={incidentsChartData}
+          />
         </div>
 
         <div style={{ flex: 1 }}>

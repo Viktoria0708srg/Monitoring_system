@@ -1,14 +1,20 @@
 import { Card, List, Tag, Typography, Button } from 'antd';
 const { Text } = Typography;
 
-export function ActiveIncidents({ incidents, totalCount }: { incidents: any[]; totalCount: number }) {
+interface ActiveIncidentsProps {
+  incidents: any[];
+  title: string;
+  totalText: string;
+}
+
+export function ActiveIncidents({ incidents, title, totalText }: ActiveIncidentsProps) {
   return (
     <Card 
       title={
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontSize: '18px', fontWeight: 'bold' }}>Активные инциденты</span>
-            <Tag color="error" style={{ borderRadius: '12px' }}>{totalCount} открытых</Tag>
+            <span style={{ fontSize: '18px', fontWeight: 'bold' }}>{title}</span>
+            <Tag color="error" style={{ borderRadius: '12px' }}>{totalText}</Tag>
           </div>
           <Button type="link" size="small" style={{ padding: 0 }}>Все →</Button>
         </div>
