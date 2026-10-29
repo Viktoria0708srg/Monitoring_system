@@ -5,16 +5,16 @@ const { Text } = Typography;
 interface IncidentsChartProps {
   data: any[];
   title: string;
-  subtitle: string;
+  
 }
 
-export function IncidentsChart({ data, title, subtitle }: IncidentsChartProps) {
+export function IncidentsChart({ data, title }: IncidentsChartProps) {
   return (
     <Card 
       title={
         <div style={{ textAlign: 'left' }}>
           <div style={{ fontSize: '18px', fontWeight: 'bold' }}>{title}</div>
-          <Text type="secondary" style={{ fontSize: '13px', fontWeight: 'normal' }}>{subtitle}</Text>
+          
         </div>
       }
       style={{ borderRadius: '12px', textAlign: 'left', height: '100%' }}>
@@ -28,7 +28,7 @@ export function IncidentsChart({ data, title, subtitle }: IncidentsChartProps) {
         scale={{
           color: {
             domain: ['Авария', 'Предупреждение'],
-            range: ['#ff4d4f', '#faad14'],
+            range: ['#00c298', '#58e777'],
           }
         }}
         isStack={true}

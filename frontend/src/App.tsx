@@ -6,6 +6,7 @@ import { DataCenterStats } from './components/kzod';
 import { KpiCard } from './components/KpiCard';
 import { ProblemPoints } from './components/problemPoints'; 
 import { IncidentsChart } from './components/14days'
+import { EquipmentPark } from './components/park';
 const chartData = [
   { time: '00:00', type: 'Камеры', value: 99.8 }, 
   { time: '07:00', type: 'Камеры', value: 95.5 },
@@ -41,7 +42,7 @@ const branchesData = [
 
 
 
-// Данные для графика инцидентов за 14 дней
+// график инцидентов за 14 дней
 const incidentsChartData = [
   { date: '19', type: 'Предупреждение', count: 5 }, { date: '19', type: 'Авария', count: 2 },
   { date: '20', type: 'Предупреждение', count: 6 }, { date: '20', type: 'Авария', count: 2 },
@@ -57,6 +58,14 @@ const incidentsChartData = [
   { date: '30', type: 'Предупреждение', count: 9 }, { date: '30', type: 'Авария', count: 8 },
   { date: '31', type: 'Предупреждение', count: 6 }, { date: '31', type: 'Авария', count: 4 },
   { date: '1', type: 'Предупреждение', count: 4 }, { date: '1', type: 'Авария', count: 3 },
+];
+
+const equipmentData = [
+  { name: 'Камеры', value: 4999 },
+  { name: 'Серверы', value: 742 },
+  { name: 'Коммутаторы', value: 1120 },
+  { name: 'ИБП', value: 688 },
+  { name: 'Прочее', value: 665 },
 ];
 
 
@@ -118,7 +127,7 @@ function App() {
         <div style={{ flex: 2 }}>
           <AvailabilityChart 
             title="Доступность инфраструктуры за 24 часа"
-            subtitle="Доля устройств на связи, %"
+            
             data={chartData} />
         </div>
 
@@ -166,13 +175,18 @@ function App() {
         <div style={{ flex: 1 }}>
           <IncidentsChart 
             title="Инциденты за 14 дней"
-            subtitle="Зарегистрировано событий в сутки"
+            
             data={incidentsChartData}
           />
         </div>
 
         <div style={{ flex: 1 }}>
-          <Card title="Парк оборудования" style={{ borderRadius: "12px", height: '100%' }} />
+          <EquipmentPark 
+            title="Парк оборудования"
+            
+            total={8214}
+            data={equipmentData}
+          />
         </div>
       </Flex>
 

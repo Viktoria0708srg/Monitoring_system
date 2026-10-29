@@ -44,12 +44,12 @@ export function KpiCard({ title, mainValue, subValue, percent, errorText, goodTe
         height: '6px', 
         borderRadius: '3px', 
         overflow: 'hidden',
-        backgroundColor: errorText ? '#ff4d4f' : '#52c41a' // иначе зеленый
+        backgroundColor: errorText ? '#ff4d4f' : '#00c298' // иначе зеленый
       }}>
 
         <div style={{ 
           width: `${percent}%`, 
-          backgroundColor: '#52c41a', 
+          backgroundColor: '#00c298', 
           height: '100%' 
         }}></div>
 

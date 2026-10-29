@@ -31,18 +31,27 @@ export function DataCenterStats({
         marginBottom: '24px' }}>
         <div style={{ textAlign: 'center' }}>
 
-          <Progress type="circle" percent={clusterLoad} size={90} strokeColor="#0084ff" />
-          <div style={{ marginTop: '8px', fontSize: '13px', fontWeight: 500 }}>Нагрузка кластера</div>
+          <Progress type="circle" percent={clusterLoad} size={90} strokeColor="#80EE98" />
+          <div style={{ marginTop: '8px', 
+            fontSize: '13px', 
+            fontWeight: 500 }}>Нагрузка кластера</div>
           <div style={{ fontSize: '12px', color: '#8c9baa' }}>{clusterNodes}</div>
         </div>
         <div style={{ textAlign: 'center' }}>
-          <Progress type="circle" percent={storageLoad} size={90} strokeColor="#ffab02" />
-          <div style={{ marginTop: '8px', fontSize: '13px', fontWeight: 500 }}>Использование СХД</div>
-          <div style={{ fontSize: '12px', color: '#8c9baa' }}>{storageSize}</div>
+
+          <Progress type="circle" percent={storageLoad} size={90} strokeColor="#09D1C7" />
+          <div style={{ marginTop: '8px', 
+            fontSize: '13px', 
+            fontWeight: 500 }}>Использование СХД</div>
+          <div style={{ fontSize: '12px', 
+            color: '#8c9baa' }}>{storageSize}</div>
         </div>
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '13px' }}>
+      <div style={{ display: 'flex', 
+        flexDirection: 'column', 
+        gap: '12px', 
+        fontSize: '13px' }}>
         {[
           { label: 'Доступность сервисов', value: availability, color: '#52c41a' },
           { label: 'ИБП - автономность', value: ups, color: '#52c41a' },

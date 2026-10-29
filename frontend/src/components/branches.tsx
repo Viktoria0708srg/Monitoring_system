@@ -13,10 +13,11 @@ export function BranchTable({ data }: { data: any[] }) {
     { title: 'Камеры', dataIndex: 'cams' },
     { title: 'Серверы', dataIndex: 'servers' },
     { title: 'RTT', dataIndex: 'rtt' },
+
     { 
       title: 'Индекс состояния', 
       dataIndex: 'index',
-      render: (val: number) => <Progress percent={val} size="small" strokeColor="#1890ff" />
+      render: (val: number) => <Progress percent={val} size="small" strokeColor="#00c298" />
     },
     { 
       title: 'Статус', 
@@ -26,8 +27,14 @@ export function BranchTable({ data }: { data: any[] }) {
   ];
 
   return (
-    <Card title={<span style={{ fontSize: '18px', fontWeight: 'bold' }}>ИТ-состояние по филиалам</span>} style={{ borderRadius: '12px', textAlign: 'left', height: '100%' }}>
-      <Table dataSource={data} columns={columns} pagination={false} size="small" />
+    <Card title={<span style={{ fontSize: '18px', fontWeight: 'bold' }}>ИТ-состояние по филиалам</span>} 
+    style={{ borderRadius: '12px', textAlign: 'left', height: '100%' }}>
+
+      <Table 
+      dataSource={data} 
+      columns={columns} 
+      pagination={false} 
+      size="small" />
     </Card>
   );
 }

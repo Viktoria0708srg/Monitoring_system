@@ -11,8 +11,12 @@ export function ActiveIncidents({ incidents, title, totalText }: ActiveIncidents
   return (
     <Card 
       title={
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <div style={{ display: 'flex', 
+        justifyContent: 'space-between', 
+        alignItems: 'center' }}>
+          <div style={{ display: 'flex', 
+            alignItems: 'center', 
+            gap: '8px' }}>
             <span style={{ fontSize: '18px', fontWeight: 'bold' }}>{title}</span>
             <Tag color="error" style={{ borderRadius: '12px' }}>{totalText}</Tag>
           </div>
