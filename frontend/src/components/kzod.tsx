@@ -24,14 +24,20 @@ export function DataCenterStats({
           <Tag color="success" style={{ borderRadius: '12px', margin: 0 }}>Норма</Tag>
         </div>
       }
-      style={{ borderRadius: '12px', textAlign: 'left', height: '100%' }}>
+      style={{ borderRadius: '13px', textAlign: 'left', height: '100%' }}>
         
       <div style={{ display: 'flex', 
         justifyContent: 'space-around',
         marginBottom: '24px' }}>
         <div style={{ textAlign: 'center' }}>
 
-          <Progress type="circle" percent={clusterLoad} size={90} strokeColor="#80EE98" />
+          <Progress 
+            type="circle" 
+            percent={clusterLoad} 
+            size={90} 
+            strokeWidth={12}
+            strokeColor="#80EE98"/>
+
           <div style={{ marginTop: '8px', 
             fontSize: '13px', 
             fontWeight: 500 }}>Нагрузка кластера</div>
@@ -39,7 +45,13 @@ export function DataCenterStats({
         </div>
         <div style={{ textAlign: 'center' }}>
 
-          <Progress type="circle" percent={storageLoad} size={90} strokeColor="#09D1C7" />
+          <Progress 
+            type="circle" 
+            percent={storageLoad} 
+            size={90} 
+            strokeWidth={12}
+            strokeColor="#09D1C7" />
+            
           <div style={{ marginTop: '8px', 
             fontSize: '13px', 
             fontWeight: 500 }}>Использование СХД</div>

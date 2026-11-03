@@ -1,7 +1,7 @@
 import { Card, Table, Progress, Tag } from 'antd';
 
 const statusMap: any = {
-  ok: { color: 'success', text: 'Норма' },
+  ok: { color: '#00c298', text: 'Норма' },
   warn: { color: 'warning', text: 'Внимание' },
   error: { color: 'error', text: 'Авария' }
 };

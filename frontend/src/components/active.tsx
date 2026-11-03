@@ -1,4 +1,5 @@
 import { Card, List, Tag, Typography, Button } from 'antd';
+import { Link } from 'react-router-dom';
 const { Text } = Typography;
 
 interface ActiveIncidentsProps {
@@ -31,7 +32,12 @@ export function ActiveIncidents({ incidents, title, totalText }: ActiveIncidents
         renderItem={(item) => (
           <div style={{ padding: '16px 24px', borderBottom: '1px solid #f0f0f0' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-              <Text strong>{item.title}</Text>
+              
+              {/* ССЫЛКА НА ВТОРУЮ СТРАНИЦУ */}
+              <Link to="/voronezh" style={{ fontWeight: 'bold', color: '#1890ff' }}>
+                {item.title}
+              </Link>
+              
               <Text type="secondary" style={{ fontSize: '12px' }}>{item.time}</Text>
             </div>
             <div style={{ fontSize: '13px', color: '#5c6b7f', borderLeft: `3px solid ${item.type === 'error' ? '#ff4d4f' : '#faad14'}`, paddingLeft: '8px' }}>

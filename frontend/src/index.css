@@ -1,7 +1,8 @@
 body {
-  background-color: #13d1bb65; 
+  background-color: #ddf3f0bd !important;
   margin: 0;
   padding: 0;
+  font-family:  'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 .ant-card {
@@ -12,7 +13,7 @@ body {
 
 .ant-card:hover {
   transform: scale(1.02); /* Увеличение на 2% */
-  box-shadow: 0 8px 24px rgba(76, 175, 80, 0.15); 
-  border-color: #81c784; 
-  z-index: 10; /* Карточка выходит на передний план */
+  box-shadow: 0 8px 24px rgba(76, 175, 145, 0.15); 
+  border-color: #538f7b; 
+  z-index: 10; /* выходит на передний план */
 }
