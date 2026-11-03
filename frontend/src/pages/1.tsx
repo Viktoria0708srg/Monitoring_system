@@ -7,6 +7,9 @@ import { KpiCard } from '../components/KpiCard';
 import { ProblemPoints } from '../components/problemPoints'; 
 import { IncidentsChart } from '../components/14days'
 import { EquipmentPark } from '../components/park';
+import { Link } from 'react-router-dom';
+import { Button } from 'antd';
+
 const chartData = [
   { time: '00:00', type: 'Камеры', value: 99.8 }, 
   { time: '07:00', type: 'Камеры', value: 95.5 },
@@ -72,24 +75,35 @@ const equipmentData = [
 export function OverviewPage() {
   return (
     <div style={{ padding: '24px',  minHeight: '100vh' }}>
-      <div style={{ marginBottom: '24px', textAlign: 'left' }}>
-        <h1 style={{ 
-          margin: 0, 
-          fontSize: '28px', 
-          fontWeight: 'bold', 
-          color: '#000000' 
-        }}>
-          Мониторинг ИТ-инфраструктуры
-        </h1>
+      
+      {/* ЗАГОЛОВОК С КНОПКОЙ (я добавил flex-обертку только для того, чтобы кнопка встала справа) */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '24px', textAlign: 'left' }}>
+        <div>
+          <h1 style={{ 
+            margin: 0, 
+            fontSize: '28px', 
+            fontWeight: 'bold', 
+            color: '#000000' 
+          }}>
+            Мониторинг ИТ-инфраструктуры
+          </h1>
 
-        <div style={{ 
-          marginTop: '8px', 
-          fontSize: '14px', 
-          color: '#6d7985' 
-        }}>
-          Данные поступают с пунктов пропуска в Центральный аппарат по защищённым каналам ViPNet
+          <div style={{ 
+            marginTop: '8px', 
+            fontSize: '14px', 
+            color: '#6d7985' 
+          }}>
+            Данные поступают с пунктов пропуска в Центральный аппарат по защищённым каналам ViPNet
+          </div>
+        </div>
+        
+        {/* САМА КНОПКА */}
+        <Link to="/model">
+          <Button type="primary" style={{ borderRadius: '8px' }}>
+            Модель данных
+          </Button>
+        </Link>
       </div>
-    </div>
 
       <Flex gap="middle" wrap="nowrap" style={{ marginBottom: '24px' }}>
 
@@ -206,5 +220,3 @@ export function OverviewPage() {
     </div>
   );
 }
-
-

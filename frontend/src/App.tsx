@@ -1,7 +1,8 @@
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Layout } from 'antd';
 import { OverviewPage } from './pages/1'; 
 import { VoronezhPage } from './pages/2'; 
+import { ModelPage } from './pages/3'; // Добавили импорт
 
 const { Content } = Layout;
 
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<OverviewPage />} /> 
           <Route path="/overview" element={<OverviewPage />} />
           <Route path="/voronezh" element={<VoronezhPage />} />
+          <Route path="/model" element={<ModelPage />} /> {/* Добавили маршрут */}
         </Routes>
       </Content>
     </Layout>
