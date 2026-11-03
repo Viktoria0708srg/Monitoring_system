@@ -12,12 +12,8 @@ export function ActiveIncidents({ incidents, title, totalText }: ActiveIncidents
   return (
     <Card 
       title={
-        <div style={{ display: 'flex', 
-        justifyContent: 'space-between', 
-        alignItems: 'center' }}>
-          <div style={{ display: 'flex', 
-            alignItems: 'center', 
-            gap: '8px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span style={{ fontSize: '18px', fontWeight: 'bold' }}>{title}</span>
             <Tag color="error" style={{ borderRadius: '12px' }}>{totalText}</Tag>
           </div>
@@ -29,24 +25,39 @@ export function ActiveIncidents({ incidents, title, totalText }: ActiveIncidents
     >
       <List
         dataSource={incidents}
-        renderItem={(item) => (
-          <div style={{ padding: '16px 24px', borderBottom: '1px solid #f0f0f0' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-              
-              {/* ССЫЛКА НА ВТОРУЮ СТРАНИЦУ */}
-              <Link to="/voronezh" style={{ fontWeight: 'bold', color: '#1890ff' }}>
-                {item.title}
+        renderItem={(item) => {
+          // Контент одного инцидента
+          const content = (
+            <div style={{ padding: '16px 24px', borderBottom: '1px solid #f0f0f0' }}>
+              <div style={{ display: 'flex', 
+                justifyContent: 'space-between', 
+                marginBottom: '4px' }}>
+                  
+                <Text strong>{item.title}</Text>
+                <Text type="secondary" style={{ fontSize: '12px' }}>{item.time}</Text>
+              </div>
+              <div style={{ fontSize: '13px', 
+                color: '#5c6b7f', 
+                borderLeft: `3px solid ${item.type === 'error' ? '#ff4d4f' : '#faad14'}`, 
+                paddingLeft: '8px' }}>
+                {item.desc}
+                <br />
+                <Text type="secondary" style={{ fontSize: '12px' }}>{item.details}</Text>
+              </div>
+            </div>
+          );
+
+          // Если есть поле линк, оборачиваем его в кликабельную ссылку
+          if (item.link) {
+            return (
+              <Link to={item.link} style={{ display: 'block', color: 'inherit' }} className="incident-link">
+                {content}
               </Link>
-              
-              <Text type="secondary" style={{ fontSize: '12px' }}>{item.time}</Text>
-            </div>
-            <div style={{ fontSize: '13px', color: '#5c6b7f', borderLeft: `3px solid ${item.type === 'error' ? '#ff4d4f' : '#faad14'}`, paddingLeft: '8px' }}>
-              {item.desc}
-              <br />
-              <Text type="secondary" style={{ fontSize: '12px' }}>{item.details}</Text>
-            </div>
-          </div>
-        )}
+            );
+          }
+
+          return content;
+        }}
       />
     </Card>
   );

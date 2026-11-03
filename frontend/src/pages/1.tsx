@@ -28,7 +28,7 @@ const chartData = [
 const incidentsData = [
   { id: 1, title: 'МАПП Нехотеевка', desc: 'Потеря связи с видеосервером № 2', time: '12 мин', type: 'error', details: '8 камер недоступны' },
   { id: 2, title: 'ЖДПП Валуйки', desc: 'Канал ViPNet не поднялся после перезагрузки', time: '41 мин', type: 'warning', details: 'нет данных 41 мин' },
-  { id: 3, title: 'ВПП Воронеж (Чертовицкое)', desc: 'Заполнение архива 92 %', time: '1 ч', type: 'warning', details: 'глубина архива 11 сут' },
+  { id: 3, title: 'ВПП Воронеж (Чертовицкое)', desc: 'Заполнение архива 92 %', time: '1 ч', type: 'warning', details: 'глубина архива 11 сут',link: '/voronezh' },
 ];
 
 //филиалы
