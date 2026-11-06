@@ -1,12 +1,14 @@
-import { Flex } from 'antd';
+import { Flex,Card } from 'antd';
 import { VoronezhHeader } from '../components/voronezh/header';
 import { CamerasTable } from '../components/voronezh/cameraTable';
 import { ServersList } from '../components/voronezh/servers';
 import { KpiCard } from '../components/KpiCard';
+import { ArchiveStats } from '../components/voronezh/archive';
+
 
 const channelStats = [
-  { label: 'RTT', value: '28 мс', color: '#52c41a' },
-  { label: 'Потери пакетов', value: '0,1 %', color: '#52c41a' },
+  { label: 'RTT', value: '28 мс', color: '#00c298' },
+  { label: 'Потери пакетов', value: '0,1 %', color: '#00c298'},
   { label: 'Полоса', value: '14 / 200 Мбит/с', color: '#111b2e' },
   { label: 'Передано за сутки', value: '1,6 ГБ', color: '#111b2e' },
   { label: 'Последняя синхронизация', value: '12:41:07', color: '#111b2e' },
@@ -85,7 +87,7 @@ export function VoronezhPage() {
           subValue="основной + резервный" 
           percent={100} 
           goodText="Резерв в горячем режиме" />
-          
+
         </div>
 
       </Flex>
@@ -99,6 +101,40 @@ export function VoronezhPage() {
           <ServersList servers={serversData} otherEquipment={otherEquipment} />
         </div>
       </Flex>
+
+            {/* 3. Нижний ряд */}
+      <Flex gap="middle" wrap="nowrap" style={{ marginTop: '24px' }}>
+        
+        <div style={{ flex: 1 }}>
+          <Card title="Доступность камер за 7 дней" style={{ borderRadius: '12px', height: '100%' }}>
+             <div style={{ height: '180px' }}></div>
+          </Card>
+        </div>
+
+        <div style={{ flex: 1 }}>
+          <Card title="Загрузка канала ViPNet" style={{ borderRadius: '12px', height: '100%' }}>
+             <div style={{ height: '180px' }}></div>
+          </Card>
+        </div>
+
+        {/* архив */}
+        <div style={{ flex: 1 }}>
+          <ArchiveStats 
+            title="Архив видеонаблюдения"
+  
+            depth={27}
+            usedPercent={68}
+            usedSpace="272 ТБ"
+            totalSpace="400 ТБ"
+            norm="30 суток"
+            forecast="через 19 суток"
+            bitrate="4,2 Мбит/с"
+            offlineCameras="1 из 26"
+          />
+        </div>
+
+      </Flex>
+
 
     </div>
   );
