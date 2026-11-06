@@ -44,7 +44,6 @@ const branchesData = [
 ];
 
 
-
 // график инцидентов за 14 дней
 const incidentsChartData = [
   { date: '19', type: 'Предупреждение', count: 5 }, { date: '19', type: 'Авария', count: 2 },
@@ -76,7 +75,7 @@ export function OverviewPage() {
   return (
     <div style={{ padding: '24px',  minHeight: '100vh' }}>
       
-      {/* ЗАГОЛОВОК С КНОПКОЙ (я добавил flex-обертку только для того, чтобы кнопка встала справа) */}
+      {/* ЗАГОЛОВОК С КНОПКОЙ  */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '24px', textAlign: 'left' }}>
         <div>
           <h1 style={{ 
@@ -96,8 +95,7 @@ export function OverviewPage() {
             Данные поступают с пунктов пропуска в Центральный аппарат по защищённым каналам ViPNet
           </div>
         </div>
-        
-        {/* САМА КНОПКА */}
+  
         <Link to="/model">
           <Button type="primary" style={{ borderRadius: '8px' }}>
             Модель данных
