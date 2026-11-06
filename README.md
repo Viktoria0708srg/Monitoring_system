@@ -9,7 +9,7 @@
 *   Vite (сборщик)
 *   Ant Design (UI-компоненты)
 *   @ant-design/plots (графики)
-*   React Router DOM (навигация)
+
 
 **Backend (в разработке):**
 *   Python (FastAPI)
