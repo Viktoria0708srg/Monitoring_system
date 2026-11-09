@@ -1,12 +1,12 @@
 import { Flex, Card } from 'antd'; 
-import { AvailabilityChart } from '../components/chart'; 
-import { ActiveIncidents } from '../components/active';
-import { BranchTable } from '../components/branches'; 
-import { DataCenterStats } from '../components/kzod';
-import { KpiCard } from '../components/KpiCard';
-import { ProblemPoints } from '../components/problemPoints'; 
-import { IncidentsChart } from '../components/14days'
-import { EquipmentPark } from '../components/park';
+import { AvailabilityChart } from '../components/monitoring/chart'; 
+import { ActiveIncidents } from '../components/monitoring/active';
+import { BranchTable } from '../components/monitoring/branches'; 
+import { DataCenterStats } from '../components/monitoring/kzod';
+import { KpiCard } from '../components/monitoring/KpiCard';
+import { ProblemPoints } from '../components/monitoring/problemPoints'; 
+import { IncidentsChart } from '../components/monitoring/14days'
+import { EquipmentPark } from '../components/monitoring/park';
 import { Link } from 'react-router-dom';
 import { Button } from 'antd';
 

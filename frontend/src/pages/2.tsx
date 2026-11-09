@@ -2,8 +2,9 @@ import { Flex,Card } from 'antd';
 import { VoronezhHeader } from '../components/voronezh/header';
 import { CamerasTable } from '../components/voronezh/cameraTable';
 import { ServersList } from '../components/voronezh/servers';
-import { KpiCard } from '../components/KpiCard';
+import { KpiCard } from '../components/monitoring/KpiCard';
 import { ArchiveStats } from '../components/voronezh/archive';
+import { CamerasAvailability } from '../components/voronezh/7days'
 
 
 const channelStats = [
@@ -40,7 +41,15 @@ const otherEquipment: { label: string; value: string }[] = [
   { label: 'Температура в серверной', value: '23,1 °C' },
 ];
 
-
+const availabilityData = [
+  { day: 'Чт', value: 95, status: 'norm' },
+  { day: 'Пт', value: 99, status: 'norm' },
+  { day: 'Сб', value: 95, status: 'norm' },
+  { day: 'Вс', value: 98, status: 'norm' },
+  { day: 'Пн', value: 80, status: 'warning' },
+  { day: 'Вт', value: 90, status: 'warning' },
+  { day: 'Ср', value: 83.0, status: 'warning' },
+];
 export function VoronezhPage() {
   return (
     <div style={{ padding: '24px', minHeight: '100vh' }}>
@@ -103,13 +112,13 @@ export function VoronezhPage() {
       </Flex>
 
             {/* 3. Нижний ряд */}
+
       <Flex gap="middle" wrap="nowrap" style={{ marginTop: '24px' }}>
         
         <div style={{ flex: 1 }}>
-          <Card title="Доступность камер за 7 дней" style={{ borderRadius: '12px', height: '100%' }}>
-             <div style={{ height: '180px' }}></div>
-          </Card>
+          <CamerasAvailability data={availabilityData} />
         </div>
+
 
         <div style={{ flex: 1 }}>
           <Card title="Загрузка канала ViPNet" style={{ borderRadius: '12px', height: '100%' }}>
@@ -121,7 +130,6 @@ export function VoronezhPage() {
         <div style={{ flex: 1 }}>
           <ArchiveStats 
             title="Архив видеонаблюдения"
-  
             depth={27}
             usedPercent={68}
             usedSpace="272 ТБ"
