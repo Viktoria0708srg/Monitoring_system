@@ -15,7 +15,7 @@ export function ActiveIncidents({ incidents, title, totalText }: ActiveIncidents
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span style={{ fontSize: '18px', fontWeight: 'bold' }}>{title}</span>
-            <Tag color="error" style={{ borderRadius: '12px' }}>{totalText}</Tag>
+            <Tag color="#9c000d" style={{ borderRadius: '12px' }}>{totalText}</Tag>
           </div>
           <Button type="link" size="small" style={{ padding: 0 }}>Все →</Button>
         </div>
@@ -38,7 +38,7 @@ export function ActiveIncidents({ incidents, title, totalText }: ActiveIncidents
               </div>
               <div style={{ fontSize: '13px', 
                 color: '#5c6b7f', 
-                borderLeft: `3px solid ${item.type === 'error' ? '#ff4d4f' : '#faad14'}`, 
+                borderLeft: `3px solid ${item.type === 'error' ? '#9c000d' : '#faad14'}`, 
                 paddingLeft: '8px' }}>
                 {item.desc}
                 <br />

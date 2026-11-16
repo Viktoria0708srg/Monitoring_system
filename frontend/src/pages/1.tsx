@@ -95,7 +95,7 @@ export function OverviewPage() {
             margin: 0, 
             fontSize: '28px', 
             fontWeight: 'bold', 
-            color: '#000000' 
+            color: '#ffffffd8' 
           }}>
             Мониторинг ИТ-инфраструктуры
           </h1>
@@ -103,7 +103,7 @@ export function OverviewPage() {
           <div style={{ 
             marginTop: '8px', 
             fontSize: '14px', 
-            color: '#6d7985' 
+            color: '#b9b9b9' 
           }}>
             Данные поступают с пунктов пропуска в Центральный аппарат по защищённым каналам ViPNet
           </div>
@@ -176,7 +176,22 @@ export function OverviewPage() {
         <div style={{ flex: 2 }}>
           <AvailabilityChart 
             title="Доступность инфраструктуры за 24 часа"
-            data={chartData} />
+            data={chartData} 
+            // Передаем свою легенду прямо в заголовок карточки
+            headerRight={
+              <div style={{ display: 'flex', gap: '16px', fontSize: '12px', fontWeight: 'normal', color: '#8c9baa' }}>
+                <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#1890ff' }}></span> Камеры
+                </span>
+                <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#52c41a' }}></span> Серверы
+                </span>
+                <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#d12e2e' }}></span> ViPNet
+                </span>
+              </div>
+            }
+          />
         </div>
 
         <div style={{ flex: 1 }}>

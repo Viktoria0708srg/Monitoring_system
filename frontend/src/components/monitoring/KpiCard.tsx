@@ -12,7 +12,7 @@ interface KpiCardProps {
 export function KpiCard({ title, mainValue, subValue, percent = 0, errorText, goodText }: KpiCardProps) {
   
   const isGood = percent > 70;
-  const barColor = isGood ? '#00c298' : '#ff4d4f';
+  const barColor = isGood ? '#00c298' : '#cf0003';
 
   return (
     <Card style={{ width: '100%', borderRadius: '12px' }} bodyStyle={{ padding: '16px' }}>
@@ -50,15 +50,15 @@ export function KpiCard({ title, mainValue, subValue, percent = 0, errorText, go
           borderRadius: '12px', 
           fontSize: '12px', 
           fontWeight: '500',
-          backgroundColor: isGood ? '#8fe4d149' : '#fff1f0',
-          color: isGood ? '#00c298' : '#cf1322'
+          backgroundColor: isGood ? '#8fe4d149' : '#e48f8f49',
+          color: isGood ? '#00c298' : '#9c000d'
         }}>
           <div style={{ 
             width: '6px', 
             height: '6px', 
             borderRadius: '50%', 
             marginRight: '6px',
-            backgroundColor: isGood ? '#00c298' : '#cf1322' 
+            backgroundColor: isGood ? '#00c298' : '#9c000d'
           }}></div>
 
           {isGood ? (goodText || "норма") : (errorText || "авария")}
