@@ -5,6 +5,9 @@ import { ServersList } from '../components/voronezh/servers';
 import { KpiCard } from '../components/monitoring/KpiCard';
 import { ArchiveStats } from '../components/voronezh/archive';
 import { CamerasAvailability } from '../components/voronezh/7days'
+import { ViPNetChart } from '../components/voronezh/vipnet';
+import { EventLog } from '../components/voronezh/eventLog';
+
 
 
 const channelStats = [
@@ -48,8 +51,57 @@ const availabilityData = [
   { day: 'Вс', value: 98, status: 'norm' },
   { day: 'Пн', value: 80, status: 'warning' },
   { day: 'Вт', value: 90, status: 'warning' },
-  { day: 'Ср', value: 83.0, status: 'warning' },
+  { day: 'Ср', value: 81, status: 'warning' },
 ];
+
+// ViPNet
+const vipnetData = [
+  { time: '00:00', value: 30 },
+  { time: '03:00', value: 17},
+  { time: '06:00', value: 18 },
+  { time: '09:00', value: 38 },
+  { time: '12:00', value: 42 }, 
+  { time: '15:00', value: 38 },
+  { time: '18:00', value: 32 },
+  { time: '21:00', value: 35 },
+  { time: '23:00', value: 18 },
+];
+
+// --- ДАННЫЕ ДЛЯ ЖУРНАЛА СОБЫТИЙ ---
+const eventLogData = [
+  { 
+    key: '1', time: '02.09 12:29', object: { name: 'KAM-07 · Служебный проход', color: '#ff4d4f' }, type: 'Видеокамера', 
+    event: 'Потеря видеопотока, RTSP-таймаут', duration: '12 мин', 
+    status: { text: 'Открыто', color: 'error', textColor: '#cf1322', bgColor: '#fff1f0' } 
+  },
+  { 
+    key: '2', time: '02.09 09:47', object: { name: 'KAM-04 · Перрон, сектор А', color: '#faad14' }, type: 'Видеокамера', 
+    event: 'Запись не ведётся: ошибка записи на СХД', duration: '3 ч 05 мин', 
+    status: { text: 'В работе', color: 'warning', textColor: '#d48806', bgColor: '#fffbe6' } 
+  },
+  { 
+    key: '3', time: '02.09 08:12', object: { name: 'NAS-01', color: '#faad14' }, type: 'СХД', 
+    event: 'Заполнение архива достигло 68 % — прогноз переполнения 19 суток', duration: '—', 
+    status: { text: 'В работе', color: 'warning', textColor: '#d48806', bgColor: '#fffbe6' } 
+  },
+  { 
+    key: '4', time: '02.09 04:12', object: { name: 'VS-01', color: '#00c298' }, type: 'Сервер', 
+    event: 'Резервное копирование конфигураций выполнено', duration: '2 мин', 
+    status: { text: 'Закрыто', color: 'success', textColor: '#00c298', bgColor: '#f6ffed' } 
+  },
+  { 
+    key: '5', time: '01.09 23:04', object: { name: 'Канал ViPNet', color: '#faad14' }, type: 'Канал связи', 
+    event: 'Кратковременная деградация: RTT 240 мс, потери 4,2 %', duration: '8 мин', 
+    status: { text: 'Закрыто', color: 'success', textColor: '#00c298', bgColor: '#f6ffed' } 
+  },
+  { 
+    key: '6', time: '01.09 18:33', object: { name: 'KAM-08 · Периметр, вышка 2', color: '#ff4d4f' }, type: 'Видеокамера', 
+    event: 'Нет электропитания на опоре — камера недоступна', duration: '3 ч 12 мин', 
+    status: { text: 'Открыто', color: 'error', textColor: '#cf1322', bgColor: '#fff1f0' } 
+  },
+];
+
+
 export function VoronezhPage() {
   return (
     <div style={{ padding: '24px', minHeight: '100vh' }}>
@@ -96,7 +148,6 @@ export function VoronezhPage() {
           subValue="основной + резервный" 
           percent={100} 
           goodText="Резерв в горячем режиме" />
-
         </div>
 
       </Flex>
@@ -121,9 +172,7 @@ export function VoronezhPage() {
 
 
         <div style={{ flex: 1 }}>
-          <Card title="Загрузка канала ViPNet" style={{ borderRadius: '12px', height: '100%' }}>
-             <div style={{ height: '180px' }}></div>
-          </Card>
+          <ViPNetChart data={vipnetData} />
         </div>
 
         {/* архив */}
@@ -142,6 +191,9 @@ export function VoronezhPage() {
         </div>
 
       </Flex>
+
+            {/* Журнал ИТ-событий */}
+      <EventLog data={eventLogData} />
 
 
     </div>

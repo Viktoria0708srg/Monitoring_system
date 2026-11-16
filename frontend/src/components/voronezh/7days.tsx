@@ -3,6 +3,11 @@ import { Column } from '@ant-design/plots';
 const { Text } = Typography;
 
 export function CamerasAvailability({ data }: { data: any[] }) {
+  // ср
+  const average = data.length > 0 
+    ? (data.reduce((acc, item) => acc + item.value, 0) / data.length).toFixed(1) 
+    : '0.0';
+
   return (
     <Card 
       title={
@@ -10,8 +15,9 @@ export function CamerasAvailability({ data }: { data: any[] }) {
           <div>
             <div style={{ fontSize: '16px', fontWeight: 'bold' }}>Доступность камер за 7 дней</div>
           </div>
+
           <Tag color="success" style={{ borderRadius: '12px', margin: 0, color: '#00c298', backgroundColor: '#e6f9f0' }}>
-            ср. 95,4 %
+            ср. {average.replace('.', ',')} %
           </Tag>
         </div>
       }
@@ -20,10 +26,10 @@ export function CamerasAvailability({ data }: { data: any[] }) {
     >
       <div style={{ position: 'relative', height: '100%' }}>
         
-        {/* Линия норматива */}
+        {/* норматив */}
         <div style={{
           position: 'absolute',
-          top: '13%', // высота линии норматива
+          top: '13%',
           left: '40px', 
           right: '10px',
           borderTop: '1px dashed #faad14',
@@ -49,7 +55,6 @@ export function CamerasAvailability({ data }: { data: any[] }) {
           xField="day" 
           yField="value" 
           height={260} 
-          
           
           colorField="status"
           scale={{

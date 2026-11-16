@@ -9,6 +9,8 @@ import { IncidentsChart } from '../components/monitoring/14days'
 import { EquipmentPark } from '../components/monitoring/park';
 import { Link } from 'react-router-dom';
 import { Button } from 'antd';
+import { useState, useEffect } from 'react';
+import { fetchStats } from '../api';
 
 const chartData = [
   { time: '00:00', type: 'Камеры', value: 99.8 }, 
@@ -72,6 +74,17 @@ const equipmentData = [
 
 
 export function OverviewPage() {
+  const [stats, setStats] = useState<any>(null);
+
+    useEffect(() => {
+    fetchStats()
+      .then(data => setStats(data))
+      .catch(err => console.error("Ошибка:", err));
+  }, []);
+
+  if (!stats) return <div style={{ padding: '24px' }}>Загрузка данных...</div>;
+
+
   return (
     <div style={{ padding: '24px',  minHeight: '100vh' }}>
       
@@ -103,54 +116,60 @@ export function OverviewPage() {
         </Link>
       </div>
 
+  {/* -----------------------*/}
       <Flex gap="middle" wrap="nowrap" style={{ marginBottom: '24px' }}>
-
-        <div style={{flex: 1}}>
+        
+        <div style={{ flex: 1 }}>
           <KpiCard 
-          title="Пункты пропуска на связи" 
-          mainValue={341} 
-          subValue="из 363" 
-          percent={94} 
-          errorText="22 без связи" />
-        </div>
-
-        <div style={{ flex: 1}}>
-          <KpiCard 
-          title="Видеокамеры" 
-          mainValue={4812} 
-          subValue="из 4999" 
-          percent={96} 
-          errorText="187 офлайн" />
+            title="Пункты пропуска на связи" 
+            mainValue={stats.checkpoints.online} 
+            subValue={`из ${stats.checkpoints.total}`} 
+            percent={stats.checkpoints.percent} 
+            errorText={stats.checkpoints.errorText} 
+          />
         </div>
 
         <div style={{ flex: 1 }}>
           <KpiCard 
-          title="Серверы на ПП" 
-          mainValue={726} 
-          subValue="в норме из 742" 
-          percent={98} 
-          errorText="12 предупреждений" />
+            title="Видеокамеры" 
+            mainValue={stats.cameras.online} 
+            subValue={`из ${stats.cameras.total}`} 
+            percent={stats.cameras.percent} 
+            errorText={stats.cameras.errorText} 
+          />
         </div>
 
         <div style={{ flex: 1 }}>
           <KpiCard 
-          title="КЦОД — доступность" 
-          mainValue="99,97%" 
-          subValue="за 30 дней" 
-          percent={99} 
-          goodText="норма" />
+            title="Серверы на ПП" 
+            mainValue={stats.servers.norm} 
+            subValue={`в норме из ${stats.servers.total}`} 
+            percent={stats.servers.percent} 
+            errorText={stats.servers.errorText} 
+          />
         </div>
 
         <div style={{ flex: 1 }}>
           <KpiCard 
-          title="Каналы ViPNet" 
-          mainValue={358} 
-          subValue="туннелей активно" 
-          percent={98} 
-          errorText="5 нестабильных" />
+            title="КЦОД — доступность" 
+            mainValue={`${stats.kcod.availability}%`} 
+            subValue={`за ${stats.kcod.days} дней`} 
+            percent={stats.kcod.availability} 
+            goodText={stats.kcod.statusText} 
+            errorText={stats.kcod.statusText}
+          />
+        </div>
+
+        <div style={{ flex: 1 }}>
+          <KpiCard 
+            title="Каналы ViPNet" 
+            mainValue={stats.vipnet.active} 
+            subValue="туннелей активно" 
+            percent={stats.vipnet.percent} 
+            errorText={stats.vipnet.errorText} 
+          />
         </div>
       </Flex>
-
 {/*-----------------------------*/}
 
       <Flex gap="middle" wrap="nowrap" style={{ marginBottom: '24px' }}>

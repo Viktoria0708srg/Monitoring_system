@@ -11,9 +11,3 @@ body {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04); 
   transition: all 0.3s ease; }
 
-.ant-card:hover {
-  transform: scale(1.02); /* Увеличение на 2% */
-  box-shadow: 0 8px 24px rgba(76, 175, 145, 0.15); 
-  border-color: #538f7b; 
-  z-index: 10; /* выходит на передний план */
-}
