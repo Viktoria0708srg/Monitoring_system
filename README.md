@@ -23,6 +23,19 @@
 *   `backend/` — серверная часть (Python)
 *   `blender/` — 3D-модели и сцены
 
+
+## 🚀 Как запустить Backend
+
+1. Убедитесь, что у вас установлен **Python** .
+2. Перейдите в папку:
+   cd backend
+3. Создайте виртуальное окружение:
+   python -m venv venv
+4. активируйте его в cmd:
+   venv\Scripts\activate
+5. Запустите сервер:
+   uvicorn main:app --reload
+
 ## 🚀 Как запустить Frontend
 
 1. Убедитесь, что у вас установлен **Node.js** (версия LTS).

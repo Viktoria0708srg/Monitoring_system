@@ -19,7 +19,7 @@ def get_stats():
     cam_total, cam_online = 20, 18
     srv_total, srv_norm = 50, 39
     vip_total, vip_active = 12, 7
-    kcod_value = 69.9  # Процент КЦОД
+    kcod_value = 90.9 
 
     return {
         "checkpoints": {
